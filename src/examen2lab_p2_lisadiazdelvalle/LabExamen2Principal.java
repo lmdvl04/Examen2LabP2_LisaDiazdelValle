@@ -362,10 +362,6 @@ public class LabExamen2Principal extends javax.swing.JFrame {
 
                 }
             }
-            for (Deporte deporte : deportes) {
-                System.out.println(deporte.getNombre());
-                System.out.println(deporte.getTorneos());
-            }
 
             raiz.add(nodoNombre);
             modelo.reload();
