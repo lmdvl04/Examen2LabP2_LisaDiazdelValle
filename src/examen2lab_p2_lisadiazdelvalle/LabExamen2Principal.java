@@ -47,6 +47,8 @@ public class LabExamen2Principal extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         TF_NombreTorneo = new javax.swing.JTextField();
         JB_AgregarTorne = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
+        CB_PeriodoTorneo = new javax.swing.JComboBox<>();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -145,6 +147,17 @@ public class LabExamen2Principal extends javax.swing.JFrame {
                 JB_AgregarTorneMouseClicked(evt);
             }
         });
+        JB_AgregarTorne.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JB_AgregarTorneActionPerformed(evt);
+            }
+        });
+
+        jLabel6.setFont(new java.awt.Font("Roboto Light", 0, 24)); // NOI18N
+        jLabel6.setText("Periodo");
+
+        CB_PeriodoTorneo.setFont(new java.awt.Font("Roboto Light", 0, 18)); // NOI18N
+        CB_PeriodoTorneo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Q1", "Q2", "Q4", "Q5" }));
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -156,27 +169,33 @@ public class LabExamen2Principal extends javax.swing.JFrame {
                         .addGap(187, 187, 187)
                         .addComponent(jLabel4))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(37, 37, 37)
+                        .addGap(212, 212, 212)
+                        .addComponent(JB_AgregarTorne, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(49, 49, 49)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(TF_NombreTorneo, javax.swing.GroupLayout.PREFERRED_SIZE, 447, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(210, 210, 210)
-                        .addComponent(JB_AgregarTorne, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(66, Short.MAX_VALUE))
+                            .addComponent(TF_NombreTorneo, javax.swing.GroupLayout.PREFERRED_SIZE, 447, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(CB_PeriodoTorneo, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(54, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(32, 32, 32)
                 .addComponent(jLabel4)
-                .addGap(34, 34, 34)
+                .addGap(17, 17, 17)
+                .addComponent(jLabel6)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(CB_PeriodoTorneo, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel5)
                 .addGap(18, 18, 18)
                 .addComponent(TF_NombreTorneo, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
+                .addGap(27, 27, 27)
                 .addComponent(JB_AgregarTorne, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(42, Short.MAX_VALUE))
+                .addGap(43, 43, 43))
         );
 
         javax.swing.GroupLayout JF_AgregarTorneoLayout = new javax.swing.GroupLayout(JF_AgregarTorneo.getContentPane());
@@ -259,7 +278,7 @@ public class LabExamen2Principal extends javax.swing.JFrame {
             nodo_seleccionado = (DefaultMutableTreeNode) v1;
             if (nodo_seleccionado.getUserObject() == "Torneos") {
                 PMENU_Deporte.show(evt.getComponent(), evt.getX(), evt.getY());
-            }else if(nodo_seleccionado.getUserObject() instanceof Deporte){
+            } else if (nodo_seleccionado.getUserObject() instanceof Deporte) {
                 PMENU_Torneo.show(evt.getComponent(), evt.getX(), evt.getY());
             }
         }
@@ -302,6 +321,7 @@ public class LabExamen2Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_AgregarDeporteActionPerformed
 
     private void AnadirTorneoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AnadirTorneoActionPerformed
+        deporteseleccionado = nodo_seleccionado.getUserObject().toString();
         this.setVisible(false);
         JF_AgregarTorneo.pack();
         JF_AgregarTorneo.setLocationRelativeTo(this);
@@ -311,6 +331,53 @@ public class LabExamen2Principal extends javax.swing.JFrame {
     private void JB_AgregarTorneMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JB_AgregarTorneMouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_JB_AgregarTorneMouseClicked
+
+    private void JB_AgregarTorneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JB_AgregarTorneActionPerformed
+        try {
+            Torneo d = new Torneo(TF_NombreTorneo.getText());
+            torneos.add(d);
+            DefaultTreeModel modelo = (DefaultTreeModel) jTree1.getModel();
+            DefaultMutableTreeNode raiz = (DefaultMutableTreeNode) modelo.getRoot();
+
+            DefaultMutableTreeNode nodoNombre = null;
+
+            for (int i = 0; i < raiz.getChildCount(); i++) {
+                nodoNombre = (DefaultMutableTreeNode) raiz.getChildAt(i);
+                if (nodoNombre.getUserObject().equals(CB_PeriodoTorneo.getSelectedItem().toString())) {
+                    for (int j = 0; j < nodoNombre.getChildCount(); j++) {
+                        DefaultMutableTreeNode deporte = (DefaultMutableTreeNode) nodoNombre.getChildAt(j);
+                        if (deporteseleccionado.equals(deporte.getUserObject().toString())) {
+                            DefaultMutableTreeNode torneo = new DefaultMutableTreeNode(d);
+                            deporte.add(torneo);
+                            nodoNombre.add(deporte);
+                            for (int k = 0; k < deportes.size(); k++) {
+                                Deporte dep = deportes.get(k);
+                                if(dep.getNombre().equals(deporte.getUserObject().toString()))
+                                    dep.getTorneos().add(d);
+                                
+                            }
+                            break;
+                        }
+                    }
+
+                }
+            }
+            for (Deporte deporte : deportes) {
+                System.out.println(deporte.getNombre());
+                System.out.println(deporte.getTorneos());
+            }
+
+            raiz.add(nodoNombre);
+            modelo.reload();
+            TF_NombreTorneo.setText("");
+
+            JOptionPane.showMessageDialog(this, "Torneo agregado exitosamente");
+            JF_AgregarTorneo.setVisible(false);
+            this.setVisible(true);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_JB_AgregarTorneActionPerformed
 
     /**
      * @param args the command line arguments
@@ -350,6 +417,7 @@ public class LabExamen2Principal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem AgregarDeporte;
     private javax.swing.JMenuItem AnadirTorneo;
+    private javax.swing.JComboBox<String> CB_PeriodoTorneo;
     private javax.swing.JButton JB_AgregarDeporte;
     private javax.swing.JButton JB_AgregarTorne;
     private javax.swing.JFrame JF_AgregarDeporte;
@@ -363,6 +431,7 @@ public class LabExamen2Principal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -370,6 +439,8 @@ public class LabExamen2Principal extends javax.swing.JFrame {
     private javax.swing.JTree jTree1;
     // End of variables declaration//GEN-END:variables
 //Personajes selectedPersonaje;
+    String deporteseleccionado;
     ArrayList<Deporte> deportes = new ArrayList();
+    ArrayList<Torneo> torneos = new ArrayList();
     DefaultMutableTreeNode nodo_seleccionado;
 }

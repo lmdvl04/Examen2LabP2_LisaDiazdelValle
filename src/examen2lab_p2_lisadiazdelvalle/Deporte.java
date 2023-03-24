@@ -4,12 +4,15 @@
  */
 package examen2lab_p2_lisadiazdelvalle;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author HTS
  */
 public class Deporte {
      private String nombre;
+        private ArrayList <Torneo> torneos = new ArrayList();
 
     public Deporte() {
     }
@@ -25,6 +28,15 @@ public class Deporte {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
+
+    public ArrayList<Torneo> getTorneos() {
+        return torneos;
+    }
+
+    public void setTorneos(ArrayList<Torneo> torneos) {
+        this.torneos = torneos;
+    }
+    
 
 
     @Override

@@ -48,7 +48,7 @@ public class Torneo {
 
     @Override
     public String toString() {
-        return "Torneo{" + "nombre=" + nombre + ", equipos=" + equipos + ", partidos=" + partidos + '}';
+        return nombre;
     }
    
     
