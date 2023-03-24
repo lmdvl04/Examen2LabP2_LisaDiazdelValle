@@ -4,6 +4,11 @@
  */
 package examen2lab_p2_lisadiazdelvalle;
 
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import javax.swing.tree.DefaultMutableTreeNode;
+import javax.swing.tree.DefaultTreeModel;
+
 /**
  *
  * @author HTS
@@ -26,21 +31,286 @@ public class LabExamen2Principal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        PMENU_Deporte = new javax.swing.JPopupMenu();
+        AgregarDeporte = new javax.swing.JMenuItem();
+        JF_AgregarDeporte = new javax.swing.JFrame();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        TF_NombreDeporte = new javax.swing.JTextField();
+        JB_AgregarDeporte = new javax.swing.JButton();
+        PMENU_Torneo = new javax.swing.JPopupMenu();
+        AnadirTorneo = new javax.swing.JMenuItem();
+        JF_AgregarTorneo = new javax.swing.JFrame();
+        jPanel3 = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        TF_NombreTorneo = new javax.swing.JTextField();
+        JB_AgregarTorne = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTree1 = new javax.swing.JTree();
+
+        AgregarDeporte.setText("Agregar Deportes");
+        AgregarDeporte.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AgregarDeporteActionPerformed(evt);
+            }
+        });
+        PMENU_Deporte.add(AgregarDeporte);
+
+        jPanel2.setBackground(new java.awt.Color(204, 204, 255));
+
+        jLabel2.setFont(new java.awt.Font("Roboto Light", 0, 24)); // NOI18N
+        jLabel2.setText("Agregar Deporte");
+
+        jLabel3.setFont(new java.awt.Font("Roboto Light", 0, 24)); // NOI18N
+        jLabel3.setText("Nombre");
+
+        TF_NombreDeporte.setFont(new java.awt.Font("Roboto Light", 0, 18)); // NOI18N
+
+        JB_AgregarDeporte.setText("Agregar");
+        JB_AgregarDeporte.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                JB_AgregarDeporteMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(187, 187, 187)
+                        .addComponent(jLabel2))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(37, 37, 37)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(TF_NombreDeporte, javax.swing.GroupLayout.PREFERRED_SIZE, 447, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(210, 210, 210)
+                        .addComponent(JB_AgregarDeporte, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(66, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(32, 32, 32)
+                .addComponent(jLabel2)
+                .addGap(34, 34, 34)
+                .addComponent(jLabel3)
+                .addGap(18, 18, 18)
+                .addComponent(TF_NombreDeporte, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26)
+                .addComponent(JB_AgregarDeporte, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(29, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout JF_AgregarDeporteLayout = new javax.swing.GroupLayout(JF_AgregarDeporte.getContentPane());
+        JF_AgregarDeporte.getContentPane().setLayout(JF_AgregarDeporteLayout);
+        JF_AgregarDeporteLayout.setHorizontalGroup(
+            JF_AgregarDeporteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        JF_AgregarDeporteLayout.setVerticalGroup(
+            JF_AgregarDeporteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
+        AnadirTorneo.setText("Anadir Torneo");
+        AnadirTorneo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AnadirTorneoActionPerformed(evt);
+            }
+        });
+        PMENU_Torneo.add(AnadirTorneo);
+
+        jPanel3.setBackground(new java.awt.Color(204, 204, 255));
+
+        jLabel4.setFont(new java.awt.Font("Roboto Light", 0, 24)); // NOI18N
+        jLabel4.setText("Agregar Torneo");
+
+        jLabel5.setFont(new java.awt.Font("Roboto Light", 0, 24)); // NOI18N
+        jLabel5.setText("Nombre");
+
+        TF_NombreTorneo.setFont(new java.awt.Font("Roboto Light", 0, 18)); // NOI18N
+
+        JB_AgregarTorne.setText("Agregar");
+        JB_AgregarTorne.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                JB_AgregarTorneMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(187, 187, 187)
+                        .addComponent(jLabel4))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(37, 37, 37)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(TF_NombreTorneo, javax.swing.GroupLayout.PREFERRED_SIZE, 447, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(210, 210, 210)
+                        .addComponent(JB_AgregarTorne, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(66, Short.MAX_VALUE))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(32, 32, 32)
+                .addComponent(jLabel4)
+                .addGap(34, 34, 34)
+                .addComponent(jLabel5)
+                .addGap(18, 18, 18)
+                .addComponent(TF_NombreTorneo, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26)
+                .addComponent(JB_AgregarTorne, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(42, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout JF_AgregarTorneoLayout = new javax.swing.GroupLayout(JF_AgregarTorneo.getContentPane());
+        JF_AgregarTorneo.getContentPane().setLayout(JF_AgregarTorneoLayout);
+        JF_AgregarTorneoLayout.setHorizontalGroup(
+            JF_AgregarTorneoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        JF_AgregarTorneoLayout.setVerticalGroup(
+            JF_AgregarTorneoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jPanel1.setBackground(new java.awt.Color(204, 204, 255));
+
+        jLabel1.setFont(new java.awt.Font("Roboto Light", 1, 24)); // NOI18N
+        jLabel1.setText("Examen II");
+
+        javax.swing.tree.DefaultMutableTreeNode treeNode1 = new javax.swing.tree.DefaultMutableTreeNode("Torneos");
+        javax.swing.tree.DefaultMutableTreeNode treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Q1");
+        treeNode1.add(treeNode2);
+        treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Q2");
+        treeNode1.add(treeNode2);
+        treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Q4");
+        treeNode1.add(treeNode2);
+        treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Q5");
+        treeNode1.add(treeNode2);
+        jTree1.setModel(new javax.swing.tree.DefaultTreeModel(treeNode1));
+        jTree1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTree1MouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(jTree1);
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(219, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(117, 117, 117))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(43, 43, 43)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(32, 32, 32)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(55, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jTree1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTree1MouseClicked
+        if (evt.getButton() == 3) {
+            int row = jTree1.getClosestRowForLocation(evt.getX(), evt.getY());
+            jTree1.setSelectionRow(row);
+            Object v1 = jTree1.getSelectionPath().getLastPathComponent();
+            nodo_seleccionado = (DefaultMutableTreeNode) v1;
+            if (nodo_seleccionado.getUserObject() == "Torneos") {
+                PMENU_Deporte.show(evt.getComponent(), evt.getX(), evt.getY());
+            }else if(nodo_seleccionado.getUserObject() instanceof Deporte){
+                PMENU_Torneo.show(evt.getComponent(), evt.getX(), evt.getY());
+            }
+        }
+    }//GEN-LAST:event_jTree1MouseClicked
+
+    private void JB_AgregarDeporteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JB_AgregarDeporteMouseClicked
+
+        try {
+            Deporte d = new Deporte(TF_NombreDeporte.getText());
+            deportes.add(d);
+            DefaultTreeModel modelo = (DefaultTreeModel) jTree1.getModel();
+            DefaultMutableTreeNode raiz = (DefaultMutableTreeNode) modelo.getRoot();
+
+            DefaultMutableTreeNode nodoNombre = null;
+
+            for (int i = 0; i < raiz.getChildCount(); i++) {
+                nodoNombre = (DefaultMutableTreeNode) raiz.getChildAt(i);
+                DefaultMutableTreeNode deporte = new DefaultMutableTreeNode(d);
+                nodoNombre.add(deporte);
+            }
+
+            raiz.add(nodoNombre);
+            modelo.reload();
+            TF_NombreDeporte.setText("");
+
+            JOptionPane.showMessageDialog(this, "Deporte agregado exitosamente");
+            JF_AgregarDeporte.setVisible(false);
+            this.setVisible(true);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }//GEN-LAST:event_JB_AgregarDeporteMouseClicked
+
+    private void AgregarDeporteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarDeporteActionPerformed
+        this.setVisible(false);
+        JF_AgregarDeporte.pack();
+        JF_AgregarDeporte.setLocationRelativeTo(this);
+        JF_AgregarDeporte.setVisible(true);
+    }//GEN-LAST:event_AgregarDeporteActionPerformed
+
+    private void AnadirTorneoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AnadirTorneoActionPerformed
+        this.setVisible(false);
+        JF_AgregarTorneo.pack();
+        JF_AgregarTorneo.setLocationRelativeTo(this);
+        JF_AgregarTorneo.setVisible(true);
+    }//GEN-LAST:event_AnadirTorneoActionPerformed
+
+    private void JB_AgregarTorneMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JB_AgregarTorneMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_JB_AgregarTorneMouseClicked
 
     /**
      * @param args the command line arguments
@@ -78,5 +348,28 @@ public class LabExamen2Principal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem AgregarDeporte;
+    private javax.swing.JMenuItem AnadirTorneo;
+    private javax.swing.JButton JB_AgregarDeporte;
+    private javax.swing.JButton JB_AgregarTorne;
+    private javax.swing.JFrame JF_AgregarDeporte;
+    private javax.swing.JFrame JF_AgregarTorneo;
+    private javax.swing.JPopupMenu PMENU_Deporte;
+    private javax.swing.JPopupMenu PMENU_Torneo;
+    private javax.swing.JTextField TF_NombreDeporte;
+    private javax.swing.JTextField TF_NombreTorneo;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTree jTree1;
     // End of variables declaration//GEN-END:variables
+//Personajes selectedPersonaje;
+    ArrayList<Deporte> deportes = new ArrayList();
+    DefaultMutableTreeNode nodo_seleccionado;
 }

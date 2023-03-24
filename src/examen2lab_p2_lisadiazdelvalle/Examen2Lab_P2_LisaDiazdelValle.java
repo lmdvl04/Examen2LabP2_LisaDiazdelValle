@@ -14,7 +14,8 @@ public class Examen2Lab_P2_LisaDiazdelValle {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+       LabExamen2Principal P = new LabExamen2Principal();
+       P.setVisible(true);
     }
     
 }
