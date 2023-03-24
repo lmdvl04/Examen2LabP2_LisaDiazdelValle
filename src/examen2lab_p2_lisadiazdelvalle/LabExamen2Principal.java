@@ -49,6 +49,14 @@ public class LabExamen2Principal extends javax.swing.JFrame {
         JB_AgregarTorne = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         CB_PeriodoTorneo = new javax.swing.JComboBox<>();
+        JF_AnadirEquipo = new javax.swing.JFrame();
+        jPanel4 = new javax.swing.JPanel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        TF_NombreEquipo = new javax.swing.JTextField();
+        JB_AgregarEquipo = new javax.swing.JButton();
+        PMENU_AgregarEquipo = new javax.swing.JPopupMenu();
+        AnadirEquipo = new javax.swing.JMenuItem();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -209,6 +217,74 @@ public class LabExamen2Principal extends javax.swing.JFrame {
             .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
+        jPanel4.setBackground(new java.awt.Color(204, 204, 255));
+
+        jLabel7.setFont(new java.awt.Font("Roboto Light", 0, 24)); // NOI18N
+        jLabel7.setText("Agregar Equipo");
+
+        jLabel8.setFont(new java.awt.Font("Roboto Light", 0, 18)); // NOI18N
+        jLabel8.setText("Nombre");
+
+        JB_AgregarEquipo.setText("Agregar");
+        JB_AgregarEquipo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                JB_AgregarEquipoMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(183, 183, 183))
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(42, 42, 42)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(TF_NombreEquipo, javax.swing.GroupLayout.PREFERRED_SIZE, 430, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(206, 206, 206)
+                        .addComponent(JB_AgregarEquipo, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(78, Short.MAX_VALUE))
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(jLabel7)
+                .addGap(26, 26, 26)
+                .addComponent(jLabel8)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(TF_NombreEquipo, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(JB_AgregarEquipo, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(136, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout JF_AnadirEquipoLayout = new javax.swing.GroupLayout(JF_AnadirEquipo.getContentPane());
+        JF_AnadirEquipo.getContentPane().setLayout(JF_AnadirEquipoLayout);
+        JF_AnadirEquipoLayout.setHorizontalGroup(
+            JF_AnadirEquipoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        JF_AnadirEquipoLayout.setVerticalGroup(
+            JF_AnadirEquipoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
+        AnadirEquipo.setText("Anadir Equipo");
+        AnadirEquipo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AnadirEquipoActionPerformed(evt);
+            }
+        });
+        PMENU_AgregarEquipo.add(AnadirEquipo);
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 255));
@@ -280,6 +356,9 @@ public class LabExamen2Principal extends javax.swing.JFrame {
                 PMENU_Deporte.show(evt.getComponent(), evt.getX(), evt.getY());
             } else if (nodo_seleccionado.getUserObject() instanceof Deporte) {
                 PMENU_Torneo.show(evt.getComponent(), evt.getX(), evt.getY());
+            }else if(nodo_seleccionado.getUserObject() instanceof Torneo){
+                PMENU_AgregarEquipo.show(evt.getComponent(), evt.getX(), evt.getY());
+                
             }
         }
     }//GEN-LAST:event_jTree1MouseClicked
@@ -375,6 +454,34 @@ public class LabExamen2Principal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_JB_AgregarTorneActionPerformed
 
+    private void AnadirEquipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AnadirEquipoActionPerformed
+         deporteseleccionado = nodo_seleccionado.getUserObject().toString();
+        this.setVisible(false);
+        JF_AnadirEquipo.pack();
+        JF_AnadirEquipo.setLocationRelativeTo(this);
+        JF_AnadirEquipo.setVisible(true);
+    }//GEN-LAST:event_AnadirEquipoActionPerformed
+
+    private void JB_AgregarEquipoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JB_AgregarEquipoMouseClicked
+        try {
+            Equipo e = new Equipo(TF_NombreEquipo.getText(),0);
+            for (Deporte d : deportes) {
+                for (int i = 0; i < d.getTorneos().size(); i++) {
+                    if(d.getTorneos().get(i).getNombre().equals(deporteseleccionado)){
+                        d.getTorneos().get(i).getEquipos().add(e);
+                        JOptionPane.showMessageDialog(this, "Equipo Anadido exitosamente");
+                    }
+                }
+                
+            }
+            TF_NombreEquipo.setText("");
+            JF_AnadirEquipo.setVisible(false);
+            this.setVisible(true);
+            
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_JB_AgregarEquipoMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -412,15 +519,20 @@ public class LabExamen2Principal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem AgregarDeporte;
+    private javax.swing.JMenuItem AnadirEquipo;
     private javax.swing.JMenuItem AnadirTorneo;
     private javax.swing.JComboBox<String> CB_PeriodoTorneo;
     private javax.swing.JButton JB_AgregarDeporte;
+    private javax.swing.JButton JB_AgregarEquipo;
     private javax.swing.JButton JB_AgregarTorne;
     private javax.swing.JFrame JF_AgregarDeporte;
     private javax.swing.JFrame JF_AgregarTorneo;
+    private javax.swing.JFrame JF_AnadirEquipo;
+    private javax.swing.JPopupMenu PMENU_AgregarEquipo;
     private javax.swing.JPopupMenu PMENU_Deporte;
     private javax.swing.JPopupMenu PMENU_Torneo;
     private javax.swing.JTextField TF_NombreDeporte;
+    private javax.swing.JTextField TF_NombreEquipo;
     private javax.swing.JTextField TF_NombreTorneo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -428,9 +540,12 @@ public class LabExamen2Principal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTree jTree1;
     // End of variables declaration//GEN-END:variables
