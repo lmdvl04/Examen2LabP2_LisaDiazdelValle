@@ -4,15 +4,17 @@
  */
 package examen2lab_p2_lisadiazdelvalle;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  *
  * @author HTS
  */
-public class Deporte {
+public class Deporte implements Serializable{
      private String nombre;
         private ArrayList <Torneo> torneos = new ArrayList();
+         private static final long SerialVersionUID  = 777L;
 
     public Deporte() {
     }

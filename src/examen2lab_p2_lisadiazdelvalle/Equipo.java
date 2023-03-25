@@ -4,13 +4,17 @@
  */
 package examen2lab_p2_lisadiazdelvalle;
 
+import java.io.Serializable;
+
 /**
  *
  * @author HTS
  */
-public class Equipo {
+public class Equipo implements Serializable {
+
     private String nombre;
     private int puntos;
+    private static final long SerialVersionUID = 777L;
 
     public Equipo() {
     }
@@ -38,10 +42,7 @@ public class Equipo {
 
     @Override
     public String toString() {
-        return "Equipo{" + "nombre=" + nombre + ", puntos=" + puntos + '}';
+        return nombre;
     }
-    
-    
-    
-    
+
 }

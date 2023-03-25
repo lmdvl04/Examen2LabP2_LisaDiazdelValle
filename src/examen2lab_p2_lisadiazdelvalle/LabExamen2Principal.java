@@ -4,8 +4,15 @@
  */
 package examen2lab_p2_lisadiazdelvalle;
 
+import java.io.IOException;
+import java.lang.System.Logger;
+import java.lang.System.Logger.Level;
+import java.security.Principal;
 import java.util.ArrayList;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
 
@@ -20,6 +27,10 @@ public class LabExamen2Principal extends javax.swing.JFrame {
      */
     public LabExamen2Principal() {
         initComponents();
+        admin Admin = new admin("Deportes.bin");
+        Admin.CargarUsuarios();
+        deportes = Admin.getDeportes();
+
     }
 
     /**
@@ -57,6 +68,34 @@ public class LabExamen2Principal extends javax.swing.JFrame {
         JB_AgregarEquipo = new javax.swing.JButton();
         PMENU_AgregarEquipo = new javax.swing.JPopupMenu();
         AnadirEquipo = new javax.swing.JMenuItem();
+        ListarEquipos = new javax.swing.JMenuItem();
+        TablaPosiciones = new javax.swing.JMenuItem();
+        CrearPartido = new javax.swing.JMenuItem();
+        JD_ListarEquipos = new javax.swing.JDialog();
+        jPanel5 = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        JL_Equipos = new javax.swing.JList<>();
+        jLabel14 = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        JT_VerPartidos = new javax.swing.JTable();
+        JB_Verpartidos = new javax.swing.JButton();
+        JF_Partido = new javax.swing.JFrame();
+        jPanel6 = new javax.swing.JPanel();
+        CB_Equipo1 = new javax.swing.JComboBox<>();
+        CB_Equipo2 = new javax.swing.JComboBox<>();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        Spiner1 = new javax.swing.JSpinner();
+        spinner2 = new javax.swing.JSpinner();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        JB_RegistrarPartido = new javax.swing.JButton();
+        jLabel13 = new javax.swing.JLabel();
+        JD_TablaPosiciones = new javax.swing.JDialog();
+        jPanel7 = new javax.swing.JPanel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        JT_Posiciones = new javax.swing.JTable();
+        jLabel15 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -166,6 +205,11 @@ public class LabExamen2Principal extends javax.swing.JFrame {
 
         CB_PeriodoTorneo.setFont(new java.awt.Font("Roboto Light", 0, 18)); // NOI18N
         CB_PeriodoTorneo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Q1", "Q2", "Q4", "Q5" }));
+        CB_PeriodoTorneo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CB_PeriodoTorneoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -285,6 +329,245 @@ public class LabExamen2Principal extends javax.swing.JFrame {
         });
         PMENU_AgregarEquipo.add(AnadirEquipo);
 
+        ListarEquipos.setText("Listar Equipos");
+        ListarEquipos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ListarEquiposActionPerformed(evt);
+            }
+        });
+        PMENU_AgregarEquipo.add(ListarEquipos);
+
+        TablaPosiciones.setText("Tabla Posiciones");
+        TablaPosiciones.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TablaPosicionesActionPerformed(evt);
+            }
+        });
+        PMENU_AgregarEquipo.add(TablaPosiciones);
+
+        CrearPartido.setText("Crear Partido\n");
+        CrearPartido.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CrearPartidoActionPerformed(evt);
+            }
+        });
+        PMENU_AgregarEquipo.add(CrearPartido);
+
+        jPanel5.setBackground(new java.awt.Color(204, 204, 255));
+
+        JL_Equipos.setModel(new DefaultListModel());
+        jScrollPane2.setViewportView(JL_Equipos);
+
+        jLabel14.setFont(new java.awt.Font("Roboto Light", 0, 24)); // NOI18N
+        jLabel14.setText("Listar Equipos");
+
+        JT_VerPartidos.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null},
+                {null},
+                {null},
+                {null}
+            },
+            new String [] {
+                "Partidos"
+            }
+        ));
+        jScrollPane3.setViewportView(JT_VerPartidos);
+
+        JB_Verpartidos.setText("-->");
+        JB_Verpartidos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                JB_VerpartidosMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(JB_Verpartidos)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 359, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(15, 15, 15))
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(277, 277, 277)
+                .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 259, Short.MAX_VALUE)
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGap(132, 132, 132)
+                        .addComponent(JB_Verpartidos)))
+                .addContainerGap(78, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout JD_ListarEquiposLayout = new javax.swing.GroupLayout(JD_ListarEquipos.getContentPane());
+        JD_ListarEquipos.getContentPane().setLayout(JD_ListarEquiposLayout);
+        JD_ListarEquiposLayout.setHorizontalGroup(
+            JD_ListarEquiposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        JD_ListarEquiposLayout.setVerticalGroup(
+            JD_ListarEquiposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
+        jPanel6.setBackground(new java.awt.Color(204, 204, 255));
+
+        jLabel9.setFont(new java.awt.Font("Roboto Light", 0, 18)); // NOI18N
+        jLabel9.setText("Equipo 1");
+
+        jLabel10.setFont(new java.awt.Font("Roboto Light", 0, 18)); // NOI18N
+        jLabel10.setText("Equipo 2");
+
+        jLabel11.setFont(new java.awt.Font("Roboto Light", 0, 18)); // NOI18N
+        jLabel11.setText("Puntos Equipo 1");
+
+        jLabel12.setFont(new java.awt.Font("Roboto Light", 0, 18)); // NOI18N
+        jLabel12.setText("Puntos Equipo 2");
+
+        JB_RegistrarPartido.setFont(new java.awt.Font("Roboto Light", 0, 18)); // NOI18N
+        JB_RegistrarPartido.setText("Registrar");
+        JB_RegistrarPartido.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                JB_RegistrarPartidoMouseClicked(evt);
+            }
+        });
+
+        jLabel13.setFont(new java.awt.Font("Roboto Light", 0, 24)); // NOI18N
+        jLabel13.setText("Partido");
+
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(50, 50, 50)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(CB_Equipo1, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Spiner1, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 96, Short.MAX_VALUE)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(CB_Equipo2, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(spinner2, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(85, 85, 85))
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(200, 200, 200)
+                .addComponent(JB_RegistrarPartido, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(155, 155, 155))
+        );
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel9)
+                    .addComponent(jLabel10))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(CB_Equipo2, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(CB_Equipo1, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel11)
+                    .addComponent(jLabel12))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Spiner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(spinner2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+                .addComponent(JB_RegistrarPartido, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(58, 58, 58))
+        );
+
+        javax.swing.GroupLayout JF_PartidoLayout = new javax.swing.GroupLayout(JF_Partido.getContentPane());
+        JF_Partido.getContentPane().setLayout(JF_PartidoLayout);
+        JF_PartidoLayout.setHorizontalGroup(
+            JF_PartidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        JF_PartidoLayout.setVerticalGroup(
+            JF_PartidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
+        jPanel7.setBackground(new java.awt.Color(204, 204, 255));
+
+        JT_Posiciones.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
+            },
+            new String [] {
+                "Posicion", "Equipo", "Puntaje"
+            }
+        ));
+        jScrollPane4.setViewportView(JT_Posiciones);
+
+        jLabel15.setFont(new java.awt.Font("Roboto Light", 0, 24)); // NOI18N
+        jLabel15.setText("Tabla de Posiciones");
+
+        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
+        jPanel7.setLayout(jPanel7Layout);
+        jPanel7Layout.setHorizontalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addGap(170, 170, 170)
+                        .addComponent(jLabel15))
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addGap(58, 58, 58)
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 424, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(68, Short.MAX_VALUE))
+        );
+        jPanel7Layout.setVerticalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(68, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout JD_TablaPosicionesLayout = new javax.swing.GroupLayout(JD_TablaPosiciones.getContentPane());
+        JD_TablaPosiciones.getContentPane().setLayout(JD_TablaPosicionesLayout);
+        JD_TablaPosicionesLayout.setHorizontalGroup(
+            JD_TablaPosicionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        JD_TablaPosicionesLayout.setVerticalGroup(
+            JD_TablaPosicionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 255));
@@ -356,9 +639,9 @@ public class LabExamen2Principal extends javax.swing.JFrame {
                 PMENU_Deporte.show(evt.getComponent(), evt.getX(), evt.getY());
             } else if (nodo_seleccionado.getUserObject() instanceof Deporte) {
                 PMENU_Torneo.show(evt.getComponent(), evt.getX(), evt.getY());
-            }else if(nodo_seleccionado.getUserObject() instanceof Torneo){
+            } else if (nodo_seleccionado.getUserObject() instanceof Torneo) {
                 PMENU_AgregarEquipo.show(evt.getComponent(), evt.getX(), evt.getY());
-                
+
             }
         }
     }//GEN-LAST:event_jTree1MouseClicked
@@ -368,6 +651,13 @@ public class LabExamen2Principal extends javax.swing.JFrame {
         try {
             Deporte d = new Deporte(TF_NombreDeporte.getText());
             deportes.add(d);
+            admin admin = new admin("Deportes.bin");
+            admin.setDeportes(deportes);
+            try {
+                admin.escribirUsuarios();
+            } catch (IOException ex) {
+
+            }
             DefaultTreeModel modelo = (DefaultTreeModel) jTree1.getModel();
             DefaultMutableTreeNode raiz = (DefaultMutableTreeNode) modelo.getRoot();
 
@@ -431,15 +721,23 @@ public class LabExamen2Principal extends javax.swing.JFrame {
                             nodoNombre.add(deporte);
                             for (int k = 0; k < deportes.size(); k++) {
                                 Deporte dep = deportes.get(k);
-                                if(dep.getNombre().equals(deporte.getUserObject().toString()))
+                                if (dep.getNombre().equals(deporte.getUserObject().toString())) {
                                     dep.getTorneos().add(d);
-                                
+                                }
+
                             }
                             break;
                         }
                     }
 
                 }
+            }
+            admin admin = new admin("Deportes.bin");
+            admin.setDeportes(deportes);
+            try {
+                admin.escribirUsuarios();
+            } catch (IOException ex) {
+
             }
 
             raiz.add(nodoNombre);
@@ -455,7 +753,7 @@ public class LabExamen2Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_JB_AgregarTorneActionPerformed
 
     private void AnadirEquipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AnadirEquipoActionPerformed
-         deporteseleccionado = nodo_seleccionado.getUserObject().toString();
+        deporteseleccionado = nodo_seleccionado.getUserObject().toString();
         this.setVisible(false);
         JF_AnadirEquipo.pack();
         JF_AnadirEquipo.setLocationRelativeTo(this);
@@ -464,23 +762,235 @@ public class LabExamen2Principal extends javax.swing.JFrame {
 
     private void JB_AgregarEquipoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JB_AgregarEquipoMouseClicked
         try {
-            Equipo e = new Equipo(TF_NombreEquipo.getText(),0);
+            Equipo e = new Equipo(TF_NombreEquipo.getText(), 0);
             for (Deporte d : deportes) {
                 for (int i = 0; i < d.getTorneos().size(); i++) {
-                    if(d.getTorneos().get(i).getNombre().equals(deporteseleccionado)){
+                    if (d.getTorneos().get(i).getNombre().equals(deporteseleccionado)) {
                         d.getTorneos().get(i).getEquipos().add(e);
                         JOptionPane.showMessageDialog(this, "Equipo Anadido exitosamente");
                     }
                 }
-                
+
+            }
+            admin admin = new admin("Deportes.bin");
+            admin.setDeportes(deportes);
+            try {
+                admin.escribirUsuarios();
+            } catch (IOException ex) {
+
             }
             TF_NombreEquipo.setText("");
             JF_AnadirEquipo.setVisible(false);
             this.setVisible(true);
-            
+
         } catch (Exception e) {
         }
     }//GEN-LAST:event_JB_AgregarEquipoMouseClicked
+
+    private void ListarEquiposActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ListarEquiposActionPerformed
+        this.setVisible(false);
+        JD_ListarEquipos.pack();
+        JD_ListarEquipos.setLocationRelativeTo(this);
+        JD_ListarEquipos.setVisible(true);
+        DefaultListModel modelo = (DefaultListModel) JL_Equipos.getModel();
+
+        String torneo = nodo_seleccionado.getUserObject().toString();
+        for (Deporte d : deportes) {
+            for (int i = 0; i < d.getTorneos().size(); i++) {
+                if (d.getTorneos().get(i).getNombre().equals(torneo)) {
+                    for (int j = 0; j < d.getTorneos().get(i).getEquipos().size(); j++) {
+                        Equipo e = d.getTorneos().get(i).getEquipos().get(j);
+                        modelo.addElement(e.getNombre());
+
+                    }
+                }
+
+            }
+        }
+
+    }//GEN-LAST:event_ListarEquiposActionPerformed
+
+    private void CB_PeriodoTorneoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CB_PeriodoTorneoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CB_PeriodoTorneoActionPerformed
+
+    private void CrearPartidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CrearPartidoActionPerformed
+        deporteseleccionado = nodo_seleccionado.getUserObject().toString();
+        this.setVisible(false);
+        JF_Partido.pack();
+        JF_Partido.setLocationRelativeTo(this);
+        JF_Partido.setVisible(true);
+        llenarcomboEquipo1();
+        llenarcomboEquipo2();
+    }//GEN-LAST:event_CrearPartidoActionPerformed
+
+    private void JB_RegistrarPartidoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JB_RegistrarPartidoMouseClicked
+        try {
+            int puntos1 = 0;
+            int puntos2 = 0;
+            Partido p = new Partido(CB_Equipo1.getSelectedItem().toString(), CB_Equipo2.getSelectedItem().toString(), ((Integer) Spiner1.getValue()), ((Integer) spinner2.getValue()));
+            for (Deporte d : deportes) {
+                for (int i = 0; i < d.getTorneos().size(); i++) {
+                    if (d.getTorneos().get(i).getNombre().equals(deporteseleccionado)) {
+                        d.getTorneos().get(i).getPartidos().add(p);
+
+                        JOptionPane.showMessageDialog(this, "Partido Registrado exitosamente");
+                    }
+                }
+
+            }
+
+            for (Deporte d : deportes) {
+                for (int i = 0; i < d.getTorneos().size(); i++) {
+                    if (d.getTorneos().get(i).getNombre().equals(deporteseleccionado)) {
+                        if (d.getTorneos().get(i).getEquipos().get(i).getNombre().equals(CB_Equipo1.getSelectedItem().toString())) {
+                            puntos1 = ((Integer) Spiner1.getValue());
+                            int e1 = d.getTorneos().get(i).getEquipos().get(i).getPuntos();
+                            d.getTorneos().get(i).getEquipos().get(i).setPuntos(e1 + puntos1);
+                            System.out.println(d.getTorneos().get(i).getEquipos().get(i).getPuntos());
+
+                        }
+                    }
+
+                }
+            }
+            for (Deporte d : deportes) {
+                for (int i = 0; i < d.getTorneos().size(); i++) {
+                    if (d.getTorneos().get(i).getNombre().equals(deporteseleccionado)) {
+                        if (d.getTorneos().get(i).getEquipos().get(i).getNombre().equals(CB_Equipo2.getSelectedItem().toString())) {
+                            puntos2 = ((Integer) spinner2.getValue());
+                            int e2 = d.getTorneos().get(i).getEquipos().get(i).getPuntos();
+                            System.out.println(e2);
+
+                            d.getTorneos().get(i).getEquipos().get(i).setPuntos(e2 + puntos2);
+                            System.out.println(d.getTorneos().get(i).getEquipos().get(i).getPuntos());
+                        }
+                    }
+
+                }
+            }
+            admin admin = new admin("Deportes.bin");
+            admin.setDeportes(deportes);
+            try {
+                admin.escribirUsuarios();
+            } catch (IOException ex) {
+
+            }
+            Spiner1.setValue(0);
+            spinner2.setValue(0);
+            JF_Partido.setVisible(false);
+            this.setVisible(true);
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_JB_RegistrarPartidoMouseClicked
+
+    private void JB_VerpartidosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JB_VerpartidosMouseClicked
+        try {
+
+            //limpiar tabla
+            JT_VerPartidos.setModel(new javax.swing.table.DefaultTableModel(new Object[][]{}, new String[]{
+                "Partidos"}));
+            //JL_Equipos.get
+
+            String torneo = nodo_seleccionado.getUserObject().toString();
+            DefaultListModel m = (DefaultListModel) JL_Equipos.getModel();
+
+            for (Deporte d : deportes) {
+                for (int i = 0; i < d.getTorneos().size(); i++) {
+                    if (d.getTorneos().get(i).getNombre().equals(torneo)) {
+                        for (int j = 0; j < d.getTorneos().get(i).getEquipos().size(); j++) {
+                            Equipo e = d.getTorneos().get(i).getEquipos().get(j);
+                           // System.out.println(e);
+                           // System.out.println(m.getElementAt(JL_Equipos.getSelectedIndex()).toString());
+                            if (m.getElementAt(JL_Equipos.getSelectedIndex()).equals(e)) {
+                                
+                                Partido p = d.getTorneos().get(i).getPartidos().get(j);
+                                Object[] row = {p.toString()};
+                                DefaultTableModel modelo = (DefaultTableModel) JT_VerPartidos.getModel();
+                                modelo.addRow(row);
+                                JT_VerPartidos.setModel(modelo);
+                            }
+                        }
+
+                    }
+                }
+
+            }
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }//GEN-LAST:event_JB_VerpartidosMouseClicked
+
+    private void TablaPosicionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TablaPosicionesActionPerformed
+        this.setVisible(true);
+        JD_TablaPosiciones.pack();
+        JD_TablaPosiciones.setLocationRelativeTo(this);
+        JD_TablaPosiciones.setVisible(true);
+        try {
+            int index = 1;
+            //limpiar tabla
+            JT_Posiciones.setModel(new javax.swing.table.DefaultTableModel(new Object[][]{}, new String[]{
+                "Posicion", "Equipo", "Puntos"}));
+            String torneo = nodo_seleccionado.getUserObject().toString();
+            for (Deporte d : deportes) {
+                for (int i = 0; i < d.getTorneos().size(); i++) {
+                    if (d.getTorneos().get(i).getNombre().equals(torneo)) {
+                        for (int j = 0; j < d.getTorneos().get(i).getEquipos().size(); j++) {
+                            Equipo e = d.getTorneos().get(i).getEquipos().get(j);
+                            Object[] row = {index, e.getNombre(), e.getPuntos()};
+                            index++;
+                            DefaultTableModel modelo = (DefaultTableModel) JT_Posiciones.getModel();
+                            modelo.addRow(row);
+                            JT_Posiciones.setModel(modelo);
+                        }
+                    }
+                }
+
+            }
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }//GEN-LAST:event_TablaPosicionesActionPerformed
+
+    private void llenarcomboEquipo1() {
+        CB_Equipo1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[]{}));
+        String torneo = nodo_seleccionado.getUserObject().toString();
+        for (Deporte d : deportes) {
+            for (int i = 0; i < d.getTorneos().size(); i++) {
+                if (d.getTorneos().get(i).getNombre().equals(torneo)) {
+                    for (int j = 0; j < d.getTorneos().get(i).getEquipos().size(); j++) {
+                        Equipo e = d.getTorneos().get(i).getEquipos().get(j);
+                        DefaultComboBoxModel modelo
+                                = (DefaultComboBoxModel) CB_Equipo1.getModel();
+                        modelo.addElement(e.getNombre());
+                        CB_Equipo1.setModel(modelo);
+                    }
+                }
+
+            }
+        }
+    }
+
+    private void llenarcomboEquipo2() {
+        CB_Equipo2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[]{}));
+        String torneo = nodo_seleccionado.getUserObject().toString();
+        for (Deporte d : deportes) {
+            for (int i = 0; i < d.getTorneos().size(); i++) {
+                if (d.getTorneos().get(i).getNombre().equals(torneo)) {
+                    for (int j = 0; j < d.getTorneos().get(i).getEquipos().size(); j++) {
+                        Equipo e = d.getTorneos().get(i).getEquipos().get(j);
+                        DefaultComboBoxModel modelo
+                                = (DefaultComboBoxModel) CB_Equipo2.getModel();
+                        modelo.addElement(e.getNombre());
+                        CB_Equipo2.setModel(modelo);
+                    }
+                }
+
+            }
+        }
+    }
 
     /**
      * @param args the command line arguments
@@ -521,20 +1031,40 @@ public class LabExamen2Principal extends javax.swing.JFrame {
     private javax.swing.JMenuItem AgregarDeporte;
     private javax.swing.JMenuItem AnadirEquipo;
     private javax.swing.JMenuItem AnadirTorneo;
+    private javax.swing.JComboBox<String> CB_Equipo1;
+    private javax.swing.JComboBox<String> CB_Equipo2;
     private javax.swing.JComboBox<String> CB_PeriodoTorneo;
+    private javax.swing.JMenuItem CrearPartido;
     private javax.swing.JButton JB_AgregarDeporte;
     private javax.swing.JButton JB_AgregarEquipo;
     private javax.swing.JButton JB_AgregarTorne;
+    private javax.swing.JButton JB_RegistrarPartido;
+    private javax.swing.JButton JB_Verpartidos;
+    private javax.swing.JDialog JD_ListarEquipos;
+    private javax.swing.JDialog JD_TablaPosiciones;
     private javax.swing.JFrame JF_AgregarDeporte;
     private javax.swing.JFrame JF_AgregarTorneo;
     private javax.swing.JFrame JF_AnadirEquipo;
+    private javax.swing.JFrame JF_Partido;
+    private javax.swing.JList<String> JL_Equipos;
+    private javax.swing.JTable JT_Posiciones;
+    private javax.swing.JTable JT_VerPartidos;
+    private javax.swing.JMenuItem ListarEquipos;
     private javax.swing.JPopupMenu PMENU_AgregarEquipo;
     private javax.swing.JPopupMenu PMENU_Deporte;
     private javax.swing.JPopupMenu PMENU_Torneo;
+    private javax.swing.JSpinner Spiner1;
     private javax.swing.JTextField TF_NombreDeporte;
     private javax.swing.JTextField TF_NombreEquipo;
     private javax.swing.JTextField TF_NombreTorneo;
+    private javax.swing.JMenuItem TablaPosiciones;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -542,16 +1072,25 @@ public class LabExamen2Principal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTree jTree1;
+    private javax.swing.JSpinner spinner2;
     // End of variables declaration//GEN-END:variables
 //Personajes selectedPersonaje;
     String deporteseleccionado;
     ArrayList<Deporte> deportes = new ArrayList();
     ArrayList<Torneo> torneos = new ArrayList();
     DefaultMutableTreeNode nodo_seleccionado;
+
 }

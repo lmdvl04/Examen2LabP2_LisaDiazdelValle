@@ -4,13 +4,16 @@
  */
 package examen2lab_p2_lisadiazdelvalle;
 
+import java.io.Serializable;
+
 /**
  *
  * @author HTS
  */
-public class Partido {
+public class Partido implements Serializable {
      private String nombreEquipo1, nombreEqipo2;
      private int punt1, punt2;
+      private static final long SerialVersionUID  = 777L;
 
     public Partido() {
     }
@@ -21,6 +24,8 @@ public class Partido {
         this.punt1 = punt1;
         this.punt2 = punt2;
     }
+
+    
 
     public String getNombreEquipo1() {
         return nombreEquipo1;
@@ -54,9 +59,10 @@ public class Partido {
         this.punt2 = punt2;
     }
 
+    
     @Override
     public String toString() {
-        return "Partido{" + "nombreEquipo1=" + nombreEquipo1 + ", nombreEqipo2=" + nombreEqipo2 + ", punt1=" + punt1 + ", punt2=" + punt2 + '}';
+        return  nombreEquipo1 + " vs. " + nombreEqipo2 ;
     }
      
      
